@@ -18,9 +18,9 @@ My approach is speed: Sometimes you just need a grid or raster real fast, but wi
 So, columns and/or rows and an optional gutter is enough. Optionally, when using a gutter you're able to specify if you want to begin and end with gutters or columns & rows. Additionally before creating any guides you can choose to remove all existing onces.
 You can use this plugin with keyboard only. Just as fast as you generate helping guides, it's possible to remove them again. The following keyboard shortcuts are helpful:
 
- - `Cmd + alt + g` - Show the Modal for generation (Setup)
+ - `Cmd + alt + g` - Show the modal for generation (Setup)
  - `Cmd + alt + r` - Removes all guides (After confirmation)
- - `Crtl+r` - Toogle Ruler visibility (shows or hides guides too)
+ - `Crtl+r` - Toogle Ruler visibility (Shows or hides any guides too)
 
 ### With a little help from my friends
 I *borrowed* a few lines of code (some tiny helper functions related to artboard selection) from [Nadav Savio](https://github.com/nadavsavio/sketch-plugins)'s Sketch-Plugins. Great work, hope you don't mind!
