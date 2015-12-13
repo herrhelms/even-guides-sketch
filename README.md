@@ -10,7 +10,7 @@ Select any artboard you have, or if not, go ahead and create one. Then either go
 `Cmd + alt + g`. A modal window will appear where you can define the setup for the guides you aim to create.
 
 ## Yes, I know...
-**Within Sketch there's a specific *Layout Settings*** where you can define any rows and columns. It's very powerful and substantial but I find it a little too dificult to maintain.
+**Within Sketch there's a specific feature for Layout Settings** where you can define any rows and columns. It's very powerful and substantial but I find it a little too dificult to maintain.
 My approach is a little different:
 
 Sometimes you just need to setup a grid or raster real fast, but precise. And once everything is at it's place. You can get rid of all these guides again.
