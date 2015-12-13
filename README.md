@@ -4,7 +4,7 @@ For the magic to shine you need to have the *Ruler* visible. `Crtl+r`
 
 ## Installation
 Install this plugin via [Sketch Toolbox](http://sketchtoolbox.com) or download the package manually into to your Sketch3 Plugin Folder. The path should resemble the following
-```.../com.bohemiancoding.sketch3/Plugins/even-guides-sketch-master```
+```.../com.bohemiancoding.sketch3/Plugins/even-guides-sketch-master``` **Tipp:** The .sketchplugin file should to reside in a directory!
 
 Select any artboard you have, or if not, go ahead and create one. Then either goto the Plugins Menu and select `Evenly Distributed Guides -> Distribute Guides` or use Keyboard shortcut
 `Cmd + alt + g`. A modal window will appear where you can define the setup for the guides you aim to create.
