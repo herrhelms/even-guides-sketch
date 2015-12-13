@@ -15,8 +15,6 @@ var last_ab_index;
 var go_next = 1; // if 0 then go to previous;
 var pluginName = 'Evenly Distributed Guides';
 
-
-
 function createSettingsPanel(artboard, msg, selectedItemIndex, doc){
   selectedItemIndex = selectedItemIndex || 0
   var formatter = [[NSNumberFormatter alloc] init];
@@ -101,16 +99,14 @@ function createSettingsPanel(artboard, msg, selectedItemIndex, doc){
   accessoryView.addSubview(inputRowGutter)
   accessoryView.addSubview(orderSelect)
 
-  var description = "Set values accordingly. Keep in mind that gutter width and amount of rows or columns should be adequate and well within the artboard's dimensions.";
   var alert = NSAlert.alloc().init()
-  alert.informativeText = description;
+  alert.informativeText =  "Set values accordingly. Keep in mind that gutter width and amount of rows or columns should be adequate and well within the artboard's dimensions.";
   alert.setMessageText(msg);
   alert.addButtonWithTitle('Ok')
   alert.addButtonWithTitle('Cancel')
   alert.setAccessoryView(accessoryView)
 
   var responseCode = alert.runModal()
-
   var sel = orderSelect.indexOfSelectedItem()
   var remove = 0;
 
@@ -122,13 +118,11 @@ function createSettingsPanel(artboard, msg, selectedItemIndex, doc){
   var columngutter = inputColumnGutter.intValue();
   var rowcount = inputRowCount.intValue();
   var rowgutter = inputRowGutter.intValue();
-
   var max_width = artboard.frame().width();
   var max_height = artboard.frame().height();
 
   var error = 'Dude, ';
-
-  if(columncount > max_width) {
+  if (columncount > max_width) {
     error += 'the amount of columns should be waaaaaay less.  Not larger then the artboard\'s width!';
   } else if (rowcount > max_height) {
     error += 'the amount of rows should be waaaaaay less. Not larger then the artboard\'s height!';
@@ -139,26 +133,21 @@ function createSettingsPanel(artboard, msg, selectedItemIndex, doc){
   } else {
     error = null;
   }
-
   // little validation
-  if(!error) {
+  if (!error) {
     return [responseCode, remove, columncount, columngutter, rowcount, rowgutter, sel]
   } else {
     [doc showMessage: error]
   }
-
-
-
 }
 
-// helper func -
+// helper func - borrowed from https://github.com/nadavsavio/sketch-plugins
 function get_previous_ab(current_ab) {
   // takes artboard object and returns next artboard object in artboards array (or first if on the last one already)
   // *** note that artboards array is built from bottom to top in the UI list of artboards
 
-  // loop through all artboards and see if each is the current one
   for (var i=0; i<=last_ab_index; i++) {
-      var test_ab = all_abs[i];
+    var test_ab = all_abs[i];
     if (test_ab == current_ab) {
       // if it's the first one then loop
       if (i==last_ab_index) {
@@ -180,7 +169,7 @@ function get_next_ab(current_ab) {
 
   // loop through all artboards and see if each is the current one
   for (var i=0; i<=last_ab_index; i++) {
-      var test_ab = all_abs[i];
+    var test_ab = all_abs[i];
     if (test_ab == current_ab) {
       // if it's the last one then loop
       if (i==0) {
@@ -208,18 +197,17 @@ function get_an_artboard(selection) {
   return current_ab;
 }
 
-
 function removeGuide(layer) {
   var artboard = layer
-  horizontalGuideCount = [[artboard horizontalRulerData] numberOfGuides]
-  verticalGuideCount = [[artboard verticalRulerData] numberOfGuides]
-  while (verticalGuideCount > 0) {
+  horizontalGuides = [[artboard horizontalRulerData] numberOfGuides]
+  verticalGuides = [[artboard verticalRulerData] numberOfGuides]
+  while (verticalGuides > 0) {
       [[artboard verticalRulerData] removeGuideAtIndex:0]
-      verticalGuideCount = [[artboard verticalRulerData] numberOfGuides]
+      verticalGuides = [[artboard verticalRulerData] numberOfGuides]
   }
   while (horizontalGuideCount > 0) {
     [[artboard horizontalRulerData] removeGuideAtIndex:0]
-    horizontalGuideCount = [[artboard horizontalRulerData] numberOfGuides]
+    horizontalGuides = [[artboard horizontalRulerData] numberOfGuides]
   }
 }
 
@@ -236,8 +224,7 @@ function addGuide(artboard, horizontalGuides, verticalGuides) {
   }
 }
 
-function fireGuideCreator(artboard, doc) {
-
+function guideCreator(artboard, doc) {
   var rect = artboard.absoluteRect()
   var settingsPanelResult = createSettingsPanel(artboard, 'Evenly distributed guides for \n' + artboard.name()  + ' (' + rect.width() + 'x' + rect.height() + 'px)', 1, doc)
 
@@ -272,10 +259,11 @@ function fireGuideCreator(artboard, doc) {
     [doc showMessage: 'A total of ' + created + ' guides have been created.']
   } else if (rows === 1 && columns === 0) {
     addGuide(artboard, null, [0, dimension_height])
+    [doc showMessage: 'Two guides have been created.']
   }  else if (columns === 1 && rows === 0) {
-    addGuide(artboard, [0, dimension_width], null)
+    [doc showMessage: 'Two guides have been created.']
   } else if (rows === 1 && columns === 1) {
-    addGuide(artboard, [0, dimension_width], [0, dimension_height])
+    [doc showMessage: 'Four guides have been created.']
   }
 }
 
@@ -307,16 +295,18 @@ function buildCoordinates(max, count, gutterWidth, order) {
           [array addObject:distance];
         }
       }
+
       if (order === 0) {
         [array addObject:max]
       }
+
       for (var p=0; p<[array length]; p++) {
         points[p] = array[p]
       }
-
   } else {
       elementDistance = max/count
       points[0] = 0
+
       for (var i=0; i <=count-1; i++) {
         distance = distance + elementDistance;
         points[i+1] = distance;
@@ -330,8 +320,8 @@ var clearGuides = function(context) {
   var selection = context.selection;
 
   var alert = NSAlert.alloc().init()
-  alert.informativeText = 'This action cannot be undone.';
-  alert.setMessageText('Sure to remove all guides?');
+  alert.setMessageText('Remove all existing guides?');
+  alert.informativeText = 'Handle with care! This action cannot be undone.';
   alert.addButtonWithTitle('Ok')
   alert.addButtonWithTitle('Cancel')
   var responseCode = alert.runModal()
@@ -339,7 +329,6 @@ var clearGuides = function(context) {
 
   if (responseCode == 1000) {
     removeGuide(current_ab);
-    [doc showMessage: pluginName + ': All guides are gone now.'];
   }
 }
 
@@ -360,8 +349,7 @@ var distributeGuides = function(context) {
       // if there's no selection, just set the next one to the first (remember that array is "backwards" == bottom to top)
       next_ab = all_abs[last_ab_index];
       next_ab.setIsSelected(1);
-      [doc showMessage: next_ab+ ': Looking thru your current document to find the next artboard.']
-      fireGuideCreator(next_ab, doc);
+      guideCreator(next_ab, doc);
     } else {
       // if there *is* a selection, then make sure it's an artboard
       current_ab = get_an_artboard(selection);
@@ -375,7 +363,7 @@ var distributeGuides = function(context) {
       current_ab.setIsSelected(0);
       next_ab.setIsSelected(1);
       */
-      fireGuideCreator(current_ab, doc);
+      guideCreator(current_ab, doc);
     }
   }
 }
