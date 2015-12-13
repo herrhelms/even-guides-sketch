@@ -1,21 +1,21 @@
 # Evenly distributed Guides
-This is a Plugin for [Sketch App](http://www.sketchapp.com) that adds guides to a selected artboard.
-For the magic to shine you need to have the *Ruler* visible. `Crtl+r`
+This is a Plugin for [Sketch App](http://www.sketchapp.com) that *adds guides to artboards*.
+For the magic to shine it's important to have the *Ruler* visible.
+
+![Screenshot](https://www.dropbox.com/s/5qm2x35qmdga598/sketchplugin_evenly_distributed_guides.jpg?raw=1)
 
 ## Installation
 Install this plugin via [Sketch Toolbox](http://sketchtoolbox.com) or download the package manually into to your Sketch3 Plugin Folder. The path should resemble the following
-```.../com.bohemiancoding.sketch3/Plugins/even-guides-sketch-master``` **Tipp:** The .sketchplugin file should to reside in a directory!
+```.../com.bohemiancoding.sketch3/Plugins/even-guides-sketch-master``` **Tipp:** The .sketchplugin file should reside in a directory!
 
-Select any artboard you have in your document. If there aren't any, go ahead and create a new one. (Fastes way is the `A` key.) Then either goto the Plugins Menu and select `Evenly Distributed Guides -> Distribute Guides` or use Keyboard shortcut
-`Cmd + alt + g`. A modal window will appear where you can define the setup for the guides you aim to create.
+Select any artboard you have in your document. If there aren't any, go ahead and create a new one. (Pressing the `A` key is the fastes way to do so.) Afterwards either goto the Plugins Menu and select `Evenly Distributed Guides -> Distribute Guides` or use the Keyboard shortcut (see below)
+A modal window will appear where you can define the setup for the guides you aim to create.
 
 ## Yes, I know...
-**Within Sketch there's a specific feature for Layout Settings** where you can define any rows and columns. It's very powerful and substantial but I find it a little too dificult to maintain.
-My approach is a little different:
-
-Sometimes you just need to setup a grid or raster real fast, but precise. And once everything is at it's place. You can get rid of all these guides again.
-So, columns and/or rows with an optional gutter should do. Optionally, when using a gutter you're able to specify if you want to begin and end with a gutter or column & row.
-Just as fast as you can generate the helping guides, it's possible to remove them again. keyboard shortcuts are really helpful here.
+**Within Sketch there's a specific feature for Layout Settings** where you can define any rows and columns, gutter, display and so on. It's very powerful and substantial but I find it too complex for most simple tasks. My approach here is a speed:
+Sometimes you need a grid or raster real fast, but precise. Once everything is aligned and at it's place you can get rid of all these guides again.
+So, columns and/or rows with an optional gutter should be enough. Optionally, when using a gutter you're able to specify if you want to begin and end with a gutter or column & row.
+You can use this plugin with keyboard only. Just as fast as you can generate the helping guides, it's possible to remove them again. keyboard shortcuts are really helpful here:
 
  - `Cmd + alt + g` - Show the Modal for generation (Setup)
  - `Cmd + alt + r` - Removes all guides (After confirmation)
