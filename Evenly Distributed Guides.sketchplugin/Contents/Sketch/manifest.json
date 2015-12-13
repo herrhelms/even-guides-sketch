@@ -1,0 +1,33 @@
+{
+  "name": "Evenly Distributed Guides",
+  "description": "Add evenly distributed guides to any artboard",
+  "author": "Herr Helms",
+  "homepage": "https://github.com/herrhelms/even-guides-sketch",
+  "version": 1.0,
+  "identifier": "com.github.herrhelms.even-guides-sketch",
+  "updateURL": "https://github.com/herrhelms/even-guides-sketch",
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Distribute Guides",
+      "identifier": "distribute-guides",
+      "shortcut": "cmd alt g",
+      "script": "Evenly-Distributed-Guides.coscript",
+      "handler": "distributeGuides"
+    },{
+      "name": "Clear all Guides",
+      "identifier": "clear-guides",
+      "shortcut": "cmd alt r",
+      "script": "Evenly-Distributed-Guides.coscript",
+      "handler": "clearGuides"
+    }
+
+  ],
+  "menu": {
+    "items": [
+      "distribute-guides",
+      "clear-guides"
+    ]
+  }
+}
