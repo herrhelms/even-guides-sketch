@@ -205,7 +205,7 @@ function removeGuide(layer) {
       [[artboard verticalRulerData] removeGuideAtIndex:0]
       verticalGuides = [[artboard verticalRulerData] numberOfGuides]
   }
-  while (horizontalGuideCount > 0) {
+  while (horizontalGuides > 0) {
     [[artboard horizontalRulerData] removeGuideAtIndex:0]
     horizontalGuides = [[artboard horizontalRulerData] numberOfGuides]
   }
@@ -245,10 +245,12 @@ function guideCreator(artboard, doc) {
       var colCoordinates = buildCoordinates(max_width, columns, colGutter, order)
       addGuide(artboard, colCoordinates, null)
     }
+
     if (rows > 1) {
       var rowCoordinates = buildCoordinates(max_height, rows, rowGutter, order)
       addGuide(artboard, null, rowCoordinates)
     }
+
     var created  = 0
     if (rowCoordinates && rowCoordinates.length > 0) {
       created = created + rowCoordinates.length
@@ -256,13 +258,16 @@ function guideCreator(artboard, doc) {
     if (colCoordinates && colCoordinates.length > 0) {
       created = created + colCoordinates.length
     }
+
     [doc showMessage: 'A total of ' + created + ' guides have been created.']
   } else if (rows === 1 && columns === 0) {
-    addGuide(artboard, null, [0, dimension_height])
+    addGuide(artboard, null, [0, max_height])
     [doc showMessage: 'Two guides have been created.']
   }  else if (columns === 1 && rows === 0) {
+    addGuide(artboard, [0, max_width], null)
     [doc showMessage: 'Two guides have been created.']
   } else if (rows === 1 && columns === 1) {
+    addGuide(artboard, [0, max_width], [0, max_height])
     [doc showMessage: 'Four guides have been created.']
   }
 }

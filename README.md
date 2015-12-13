@@ -11,7 +11,7 @@ Install this plugin via [Sketch Toolbox](http://sketchtoolbox.com) or download t
 Select any artboard you have in your document. If there aren't any, go ahead and create a new one. (Pressing the `A` key is the fastes way to do so.) Afterwards either goto the plugins menu and select `Evenly Distributed Guides -> Distribute Guides` or use keyboard shortcuts (see below).
 A modal will appear where you can define the setup for the guides you aim to create.
 
-## Yes, I know...
+### Yes, I know...
 **Within Sketch there's a specific feature for Layout Settings** where you can define any rows and columns, gutter, display, colors, placement and so on. It's very powerful and substantial but I find it too complex for most simple tasks.
 
 My approach is speed: Sometimes you just need a grid or raster real fast, but with precise evenly distributed rows or columns. Once everything is aligned and at it's place you can get rid of all these guides again.
