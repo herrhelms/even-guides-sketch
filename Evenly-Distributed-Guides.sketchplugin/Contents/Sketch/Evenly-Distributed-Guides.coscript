@@ -1,7 +1,7 @@
 /**
- * Evenly Distributed Guides 1.0
+ * Evenly Distributed Guides 1.1
  *
- * Copyright © 2015 Herr Helms https://github.com/herrhelms
+ * Copyright © 2015 Sebastian Helms https://github.com/herrhelms
  * and licenced under the MIT licence. All rights not explicitly
  * granted in the MIT license are reserved. See the included
  * LICENSE file for more details.
@@ -305,7 +305,7 @@ function buildCoordinates(max, count, gutterWidth, order) {
         [array addObject:max]
       }
 
-      for (var p=0; p<[array length]; p++) {
+      for (var p=0; p<array.count(); p++) {
         points[p] = array[p]
       }
   } else {
@@ -343,14 +343,14 @@ var distributeGuides = function(context) {
   var selection = context.selection;
   var current_ab;
   all_abs = [[doc currentPage] artboards];
-  last_ab_index = [all_abs length] - 1;
+  last_ab_index = all_abs.count() - 1;
   go_next = 1; // if 0 then go to previous;
 
-  if ([all_abs length] === 0) {
+  if (all_abs.count() === 0) {
     [doc showMessage: pluginName + ': Bummer! This plugin works only with artboards. Add one first! (A).'];
   } else {
     // loop throu your current document - find one or many artboards - loop through them to
-    if (!(selection && [selection length]) || (selection.length()==0)) {
+    if (!(selection && selection.count()) || (selection.count()==0)) {
       // if there's no selection, just set the next one to the first (remember that array is "backwards" == bottom to top)
       next_ab = all_abs[last_ab_index];
       next_ab.setIsSelected(1);

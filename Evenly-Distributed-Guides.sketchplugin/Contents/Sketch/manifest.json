@@ -1,9 +1,9 @@
 {
   "name": "Evenly Distributed Guides",
   "description": "Add evenly distributed guides to any artboard",
-  "author": "Herr Helms",
+  "author": "herrhelms",
   "homepage": "https://github.com/herrhelms/even-guides-sketch",
-  "version": 1.0,
+  "version": 1.1,
   "identifier": "com.github.herrhelms.even-guides-sketch",
   "updateURL": "https://github.com/herrhelms/even-guides-sketch",
   "compatibleVersion": 3,
